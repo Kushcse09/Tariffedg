@@ -1,10 +1,10 @@
 ═══════════════════════════════════════════════════════════════
-  HOW TO PUSH TO https://github.com/Kushcse09/Tariffed
+  HOW TO PUSH TO https://github.com/Kushcse09/Tariffedg
 ═══════════════════════════════════════════════════════════════
 
 CURRENT STATUS:
   ✓ Local repository ready
-  ✓ Remote URL configured: https://github.com/Kushcse09/Tariffed.git
+  ✓ Remote URL configured: https://github.com/Kushcse09/Tariffedg.git
   ✗ Authentication needed
 
 ───────────────────────────────────────────────────────────────
@@ -39,7 +39,7 @@ METHOD 2: Personal Access Token (PAT)
    f. COPY THE TOKEN (you won't see it again!)
 
 2. Update remote with token:
-   git remote set-url origin https://YOUR_TOKEN@github.com/Kushcse09/Tariffed.git
+   git remote set-url origin https://YOUR_TOKEN@github.com/Kushcse09/Tariffedg.git
    
    Replace YOUR_TOKEN with the token you copied
 
@@ -52,7 +52,7 @@ METHOD 3: Manual Push via Browser
 
 1. Create repository on GitHub:
    - Go to: https://github.com/new
-   - Repository name: Tariffed
+   - Repository name: Tariffedg
    - Public
    - DON'T initialize with README
    - Create repository
@@ -87,7 +87,7 @@ git push -u origin master
 VERIFY AFTER PUSH
 ───────────────────────────────────────────────────────────────
 
-Visit: https://github.com/Kushcse09/Tariffed
+Visit: https://github.com/Kushcse09/Tariffedg
 
 You should see:
 ✓ All source code files

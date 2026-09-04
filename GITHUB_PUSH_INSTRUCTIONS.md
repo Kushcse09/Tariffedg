@@ -1,9 +1,9 @@
-# Push to GitHub: https://github.com/Kushcse09/Tariffed
+# Push to GitHub: https://github.com/Kushcse09/Tariffedg
 
 ## Current Situation
 
 **Local Repository:** Ready ✓
-**Target GitHub:** https://github.com/Kushcse09/Tariffed
+**Target GitHub:** https://github.com/Kushcse09/Tariffedg
 **Issue:** Git credentials cached for wrong account (ksu0928 instead of Kushcse09)
 
 ---
@@ -41,7 +41,7 @@ Open PowerShell and run these commands:
 cd c:\Users\kusha\Downloads\tariffedge-main
 
 # Replace YOUR_TOKEN_HERE with your actual token
-git remote set-url origin https://YOUR_TOKEN_HERE@github.com/Kushcse09/Tariffed.git
+git remote set-url origin https://YOUR_TOKEN_HERE@github.com/Kushcse09/Tariffedg.git
 
 # Push everything
 git push -u origin master --force
@@ -50,7 +50,7 @@ git push -u origin master --force
 **Example:**
 ```powershell
 # If your token is: ghp_abc123xyz789
-git remote set-url origin https://ghp_abc123xyz789@github.com/Kushcse09/Tariffed.git
+git remote set-url origin https://ghp_abc123xyz789@github.com/Kushcse09/Tariffedg.git
 git push -u origin master --force
 ```
 
@@ -58,7 +58,7 @@ git push -u origin master --force
 
 ## Verify Success
 
-After pushing, visit: **https://github.com/Kushcse09/Tariffed**
+After pushing, visit: **https://github.com/Kushcse09/Tariffedg**
 
 You should see:
 - ✅ All source code files (lib/, app/, components/, scripts/)
@@ -92,14 +92,14 @@ git push -u origin master
 3. File → Add Local Repository
 4. Browse to: `c:\Users\kusha\Downloads\tariffedge-main`
 5. Repository → Repository Settings → Remote
-6. Change to: `https://github.com/Kushcse09/Tariffed.git`
+6. Change to: `https://github.com/Kushcse09/Tariffedg.git`
 7. Click **"Push origin"**
 
 ### Option C: SSH (If you have SSH keys set up)
 
 ```powershell
 cd c:\Users\kusha\Downloads\tariffedge-main
-git remote set-url origin git@github.com:Kushcse09/Tariffed.git
+git remote set-url origin git@github.com:Kushcse09/Tariffedg.git
 git push -u origin master
 ```
 
@@ -165,7 +165,7 @@ git push -u origin master --force
 If you need to reference the new URL:
 
 1. Update HACKATHON_SUBMISSION.md:
-   - Change GitHub URL to: https://github.com/Kushcse09/Tariffed
+   - Change GitHub URL to: https://github.com/Kushcse09/Tariffedg
 
 2. Update README.md if needed
 
@@ -184,7 +184,7 @@ git push origin master
 
 ```powershell
 cd c:\Users\kusha\Downloads\tariffedge-main
-git remote set-url origin https://github.com/Kushcse09/Tariffed.git
+git remote set-url origin https://github.com/Kushcse09/Tariffedg.git
 ```
 
 This prevents the token from being exposed if you share the repository or `.git` folder.
@@ -195,7 +195,7 @@ This prevents the token from being exposed if you share the repository or `.git`
 
 Once pushed, your submission package includes:
 
-**GitHub Repository:** https://github.com/Kushcse09/Tariffed
+**GitHub Repository:** https://github.com/Kushcse09/Tariffedg
 **Live Dashboard:** https://tariffedge-main-j43pnqi09-ksu0928s-projects.vercel.app
 **Alpaca Account:** PA331I6VA51Z
 

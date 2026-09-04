@@ -100,8 +100,8 @@ GDELT API → Signal Ingestion → Ticker Mapping → Risk Gate → Alpaca API
 
 ```bash
 # Clone the repository
-git clone https://github.com/ksu0928/Tariff1.git
-cd Tariff1
+git clone https://github.com/Kushcse09/Tariffedg.git
+cd Tariffedg
 
 # Install dependencies
 pnpm install

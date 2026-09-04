@@ -726,7 +726,7 @@ TariffEdge demonstrates a complete automated trading system from signal ingestio
 - Production deployment on Vercel
 
 **Deployment Status:**
-- GitHub: https://github.com/ksu0928/Tariff1
+- GitHub: https://github.com/Kushcse09/Tariffedg
 - Vercel: https://tariffedge-main-j43pnqi09-ksu0928s-projects.vercel.app
 - Local: http://localhost:3000
 

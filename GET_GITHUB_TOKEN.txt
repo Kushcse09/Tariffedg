@@ -85,7 +85,7 @@ Open PowerShell and run these commands:
    cd c:\Users\kusha\Downloads\tariffedge-main
 
 2. Update remote with your token:
-   git remote set-url origin https://YOUR_TOKEN@github.com/Kushcse09/Tariffed.git
+   git remote set-url origin https://YOUR_TOKEN@github.com/Kushcse09/Tariffedg.git
    
    ↑ Replace YOUR_TOKEN with the token you copied
 
@@ -100,7 +100,7 @@ If your copied token is:
 ghp_abc123xyz789def456ghi012jkl345mno678pqr
 
 Then the command would be:
-git remote set-url origin https://ghp_abc123xyz789def456ghi012jkl345mno678pqr@github.com/Kushcse09/Tariffed.git
+git remote set-url origin https://ghp_abc123xyz789def456ghi012jkl345mno678pqr@github.com/Kushcse09/Tariffedg.git
 
 Then push:
 git push -u origin master --force
@@ -110,7 +110,7 @@ VERIFY SUCCESS
 ───────────────────────────────────────────────────────────────
 
 After pushing, visit:
-https://github.com/Kushcse09/Tariffed
+https://github.com/Kushcse09/Tariffedg
 
 You should see all your project files!
 
@@ -133,7 +133,7 @@ Error: "token expired"
 SECURITY TIP:
 After pushing, remove the token from the URL:
 
-git remote set-url origin https://github.com/Kushcse09/Tariffed.git
+git remote set-url origin https://github.com/Kushcse09/Tariffedg.git
 
 This keeps your token private!
 

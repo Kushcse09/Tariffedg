@@ -21,7 +21,7 @@ Status: ACTIVE
 
 ### 2. Repository Information
 
-**GitHub:** https://github.com/ksu0928/Tariff1
+**GitHub:** https://github.com/Kushcse09/Tariffedg
 **Status:** Public repository
 **Commits:** 9 total (with complete history)
 **Files:** 76 tracked files + documentation
@@ -286,7 +286,7 @@ GET https://paper-api.alpaca.markets/v2/positions
 
 **Required:**
 - [x] Alpaca account ID: PA331I6VA51Z
-- [x] GitHub repository URL: https://github.com/ksu0928/Tariff1
+- [x] GitHub repository URL: https://github.com/Kushcse09/Tariffedg
 - [x] Live demo URL: https://tariffedge-main-j43pnqi09-ksu0928s-projects.vercel.app
 - [x] Write-up: HACKATHON_SUBMISSION.md
 - [x] Evidence: GROUND_TRUTH_RECONCILIATION.md

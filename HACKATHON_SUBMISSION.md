@@ -334,7 +334,7 @@ GDELT API → Signal Ingestion → Ticker Mapping
 - Alpaca Paper Trading API (REST)
 
 **Deployment:**
-- GitHub: https://github.com/ksu0928/Tariff1
+- GitHub: https://github.com/Kushcse09/Tariffedg
 - Vercel: https://tariffedge-main-j43pnqi09-ksu0928s-projects.vercel.app
 
 ### Key Files
@@ -388,7 +388,7 @@ data/audit-log.json Complete decision history
 
 ### GitHub Repository
 
-**URL:** https://github.com/ksu0928/Tariff1
+**URL:** https://github.com/Kushcse09/Tariffedg
 
 **Contents:**
 - Complete source code (76 tracked files)
