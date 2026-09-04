@@ -41,3 +41,5 @@ __v0_jsx-dev-runtime.ts
 
 .vercel
 .env*.local
+
+.npmrc
