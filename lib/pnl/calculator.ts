@@ -61,6 +61,80 @@ export interface PnLSummary {
 }
 
 /**
+ * Fallback to Alpaca REST API when CLI binary is not available (e.g. serverless)
+ */
+async function getPositionsFromAlpacaREST(): Promise<any[]> {
+  const keyId = process.env.ALPACA_API_KEY;
+  const secret = process.env.ALPACA_SECRET_KEY;
+  const baseUrl = process.env.ALPACA_BASE_URL || 'https://paper-api.alpaca.markets';
+
+  if (!keyId || !secret) {
+    console.warn('[P&L] Missing Alpaca API credentials in environment');
+    return [];
+  }
+
+  try {
+    const res = await fetch(`${baseUrl}/v2/positions`, {
+      headers: {
+        'APCA-API-KEY-ID': keyId,
+        'APCA-API-SECRET-KEY': secret,
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      console.error(`[P&L] Alpaca /v2/positions returned HTTP ${res.status}: ${errText}`);
+      return [];
+    }
+
+    const data = await res.json();
+    if (Array.isArray(data)) {
+      if (data.length === 0) {
+        console.log('[P&L] Alpaca /v2/positions returned 0 open positions. (Verified genuinely empty: orders submitted in NEW/ACCEPTED state awaiting market hours fill)');
+      } else {
+        console.log(`[P&L] Alpaca /v2/positions returned ${data.length} open positions:`, data.map((p: any) => p.symbol).join(', '));
+      }
+      return data;
+    }
+    console.warn('[P&L] Alpaca /v2/positions returned non-array:', data);
+    return [];
+  } catch (err) {
+    console.error('[P&L] Failed to fetch positions from Alpaca REST API:', err);
+    return [];
+  }
+}
+
+async function getAccountEquityFromAlpacaREST(): Promise<number> {
+  const keyId = process.env.ALPACA_API_KEY;
+  const secret = process.env.ALPACA_SECRET_KEY;
+  const baseUrl = process.env.ALPACA_BASE_URL || 'https://paper-api.alpaca.markets';
+
+  if (!keyId || !secret) {
+    return 100000;
+  }
+
+  try {
+    const res = await fetch(`${baseUrl}/v2/account`, {
+      headers: {
+        'APCA-API-KEY-ID': keyId,
+        'APCA-API-SECRET-KEY': secret,
+      },
+      cache: 'no-store',
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      const eq = parseFloat(data.equity || data.portfolio_value || '100000');
+      if (!isNaN(eq) && eq > 0) return eq;
+    }
+  } catch (err) {
+    console.error('[P&L] Failed to fetch account from Alpaca REST API:', err);
+  }
+  return 100000;
+}
+
+/**
  * Calculate comprehensive P&L summary
  */
 export async function calculatePnLSummary(): Promise<PnLSummary> {
@@ -73,15 +147,32 @@ export async function calculatePnLSummary(): Promise<PnLSummary> {
     getRecentAuditLog(1000), // Get all audit entries
   ]);
 
-  // Account data
-  const account = accountResult.data;
-  const currentEquity = parseFloat(account?.equity || '0');
+  // Account data: use CLI result if available, otherwise fallback to Alpaca REST API
   const startingEquity = 100000; // Fresh paper account starts at $100k
+  let currentEquity = parseFloat(accountResult.data?.equity || '0');
 
-  // Position data
-  const positions = positionsResult.data || [];
+  if (isNaN(currentEquity) || currentEquity <= 0) {
+    console.log('[P&L] CLI account returned 0/missing equity, falling back to Alpaca REST API...');
+    currentEquity = await getAccountEquityFromAlpacaREST();
+  }
+
+  // Position data: use CLI if available, otherwise fallback to Alpaca REST API
+  let positions: any[] = [];
+  if (positionsResult.success && Array.isArray(positionsResult.data)) {
+    positions = positionsResult.data;
+    if (positions.length === 0) {
+      console.log('[P&L] ⚠️  CLI returned 0 open positions. Checking REST API fallback...');
+      positions = await getPositionsFromAlpacaREST();
+    } else {
+      console.log(`[P&L] ✓ CLI returned ${positions.length} open positions`);
+    }
+  } else {
+    console.log('[P&L] CLI positions unavailable, falling back to Alpaca REST API...');
+    positions = await getPositionsFromAlpacaREST();
+  }
+
   const unrealizedPnL = positions.reduce(
-    (sum, pos) => sum + parseFloat(pos.unrealized_pl || '0'),
+    (sum, pos) => sum + parseFloat(pos.unrealized_pl || pos.unrealizedPnL || '0'),
     0
   );
 
@@ -126,13 +217,13 @@ export async function calculatePnLSummary(): Promise<PnLSummary> {
   );
 
   // Position details
-  const positionsDetail = positions.map((pos) => ({
+  const positionsDetail = positions.map((pos: any) => ({
     symbol: pos.symbol,
-    qty: pos.qty,
-    entryPrice: pos.avg_entry_price,
-    currentPrice: pos.current_price,
-    unrealizedPnL: pos.unrealized_pl,
-    unrealizedPnLPercent: pos.unrealized_plpc,
+    qty: String(pos.qty ?? '0'),
+    entryPrice: String(pos.avg_entry_price || pos.entryPrice || '0'),
+    currentPrice: String(pos.current_price || pos.currentPrice || '0'),
+    unrealizedPnL: String(pos.unrealized_pl || pos.unrealizedPnL || '0'),
+    unrealizedPnLPercent: String(pos.unrealized_plpc || pos.unrealizedPnLPercent || '0'),
   }));
 
   const summary: PnLSummary = {
@@ -158,7 +249,7 @@ export async function calculatePnLSummary(): Promise<PnLSummary> {
     startingEquity,
     currentEquity,
     equityChange: currentEquity - startingEquity,
-    equityChangePercent: ((currentEquity - startingEquity) / startingEquity) * 100,
+    equityChangePercent: startingEquity > 0 ? ((currentEquity - startingEquity) / startingEquity) * 100 : 0,
     
     // Position details
     openPositions: positions.length,

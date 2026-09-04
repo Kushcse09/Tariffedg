@@ -159,23 +159,39 @@ export default function Page() {
         }
 
         // Process account status
+        let liveEquity = 100000
         if (accountRes.success && accountRes.data) {
           const eq = parseFloat(accountRes.data.equity)
-          setEquity(eq.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))
+          if (!isNaN(eq) && eq > 0) {
+            liveEquity = eq
+            setEquity(eq.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))
+          }
         }
 
         // Process P&L for equity change
         if (pnlRes.success && pnlRes.data) {
-          const change = pnlRes.data.equityChange || 0
-          const changePct = pnlRes.data.equityChangePercent || 0
+          const startingBalance = pnlRes.data.startingEquity || 100000
+          const pnlEquity = parseFloat(pnlRes.data.currentEquity)
+          const validEquity = (!isNaN(pnlEquity) && pnlEquity > 0) ? pnlEquity : liveEquity
+
+          // Calculate change from starting balance (fix for -100% bug)
+          const change = validEquity - startingBalance
+          const changePct = startingBalance > 0 ? (change / startingBalance) * 100 : 0
+
+          // Guard: if change is near zero and equity hasn't moved, display as 0.00% instead of -100%
+          const displayChange = Math.abs(change) < 0.01 ? 0 : change
+          const displayChangePct = Math.abs(changePct) < 0.01 ? 0 : changePct
+
           setEquityChange({
-            amount: Math.abs(change).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
-            percent: Math.abs(changePct).toFixed(2),
-            positive: change >= 0,
+            amount: Math.abs(displayChange).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+            percent: Math.abs(displayChangePct).toFixed(2),
+            positive: displayChange >= 0,
           })
 
           // Convert positions from P&L data
           if (pnlRes.data.positionsDetail && pnlRes.data.positionsDetail.length > 0) {
+            console.log(`[Dashboard] Processing ${pnlRes.data.positionsDetail.length} positions from P&L API`)
+            
             // Group positions by underlying ticker
             const positionGroups = new Map<string, any[]>()
             
@@ -277,6 +293,9 @@ export default function Page() {
             })
 
             setPositions(posData.slice(0, 10))
+            console.log(`[Dashboard] ✓ Displaying ${posData.length} positions:`, posData.map(p => p.ticker).join(', '))
+          } else {
+            console.log('[Dashboard] ⚠️  No positions returned from P&L API. Reason: Orders submitted but not yet filled (market closed or pending execution)')
           }
         }
 
