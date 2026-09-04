@@ -218,11 +218,10 @@ Blocked trades are logged with reasoning for audit purposes.
 
 ## Documentation
 
-- **[PROJECT_ARCHITECTURE.md](./PROJECT_ARCHITECTURE.md)** - Detailed technical architecture
-- **[LIVE_DATA_INTEGRATION.md](./LIVE_DATA_INTEGRATION.md)** - Dashboard data wiring details
-- **[DEMO_QUICK_REFERENCE.md](./DEMO_QUICK_REFERENCE.md)** - Quick reference for demos
-- **[HONEST_SUBMISSION_REPORT.md](./HONEST_SUBMISSION_REPORT.md)** - Hackathon submission report
-- **[LIVE_TRADING_EVIDENCE.md](./LIVE_TRADING_EVIDENCE.md)** - Evidence of live trading activity
+- **[HACKATHON_SUBMISSION.md](./HACKATHON_SUBMISSION.md)** - Primary hackathon submission write-up
+- **[GROUND_TRUTH_RECONCILIATION.md](./GROUND_TRUTH_RECONCILIATION.md)** - Alpaca API audit and ground truth verification
+- **[SUBMISSION_CHECKLIST.md](./SUBMISSION_CHECKLIST.md)** - Submission verification and checklist
+- **[PROJECT_SUMMARY.md](./PROJECT_SUMMARY.md)** - Complete technical architecture and implementation summary
 
 ## Hackathon Submission Evidence
 
