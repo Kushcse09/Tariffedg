@@ -1,18 +1,40 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build artifacts
+.next/
+out/
+build/
+dist/
+
+# Environment variables
+.env*.local
+.env.local
+
+# Cache and temp files
+.DS_Store
+*.log
+*.tsbuildinfo
+.turbo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Vercel
+.vercel/
+
+# Workspace files
+pnpm-workspace.yaml
+steering/
+
 # v0 sandbox internal files
 __v0_runtime_loader.js
 __v0_devtools.tsx
 __v0_jsx-dev-runtime.ts
 .snowflake/
 .v0-trash/
-.vercel/
-
-# Environment variables
-.env*.local
-
-# Audit logs and data
-/data/
-
-# Common ignores
-node_modules
-.next/
-.DS_Store
