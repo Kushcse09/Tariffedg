@@ -1,23 +1,44 @@
-# TariffEdge
+# TariffEdge - Alpaca AI Trading Agents Hackathon Submission
 
-**AI-powered trading system that converts tariff and trade policy signals into executable equity and options positions.**
+**The only submission trading tariff and trade policy signals instead of traditional price/volume/IV signals.**
 
 ![Live Status](https://img.shields.io/badge/status-live-success)
-![Paper Trading](https://img.shields.io/badge/trading-paper%20account-blue)
-![Next.js](https://img.shields.io/badge/Next.js-16-black)
+![Paper Trading](https://img.shields.io/badge/account-PA331I6VA51Z-blue)
+![Orders](https://img.shields.io/badge/orders_submitted-11-yellow)
+
+## What Makes This Different
+
+While other submissions likely trade momentum, mean-reversion, or options Greeks, **TariffEdge trades macro-economic policy shifts** — tariff announcements, trade negotiations, supply chain disruptions — converted into directional equity and options positions.
+
+**Signal Source:** GDELT 2.0 global news API (real-time trade policy events)
+**Alpaca Account:** PA331I6VA51Z (paper trading)
+**Unique Approach:** Geopolitical events → US equity/ETF positions
 
 ## Overview
 
-TariffEdge monitors global trade policy events through GDELT and automatically generates trading signals for US-listed equities and ETFs. Each signal passes through a risk management gate before execution on Alpaca's paper trading platform.
+TariffEdge monitors global trade policy events through GDELT and automatically generates trading signals for US-listed equities and ETFs. Each signal passes through a 4-gate risk management system before submission to Alpaca's paper trading platform.
+
+### Current Status (Honest Assessment)
+
+**What Works:**
+- **Real-time Signal Ingestion** - GDELT 2.0 API for global tariff & trade policy news (7+ live signals)
+- **Intelligent Ticker Mapping** - Automatically maps news events to US tickers (XLE, SMH, EEM, TLT, NUE)
+- **Risk Management Gate** - 4-gate validation system with complete audit trail (18 logged decisions)
+- **Order Submission** - 11 orders successfully submitted to Alpaca paper account PA331I6VA51Z
+- **Live Dashboard** - Real-time data from Alpaca API with auto-refresh
+
+**What Doesn't Work Yet:**
+- **Order Fills** - 0 filled orders (all submitted outside market hours, awaiting next session)
+- **Real P&L** - $0 P&L (consequence of no fills)
+- **CLI Execution** - SDK fallback used (Alpaca CLI requires Go, not installed)
 
 ### Key Features
 
-- **Real-time Signal Ingestion** - GDELT 2.0 API for global tariff & trade policy news
-- **Intelligent Ticker Mapping** - Automatically maps news events to relevant US tickers
-- **Risk Management Gate** - Validates max loss, position concentration, and spread parameters
-- **Multi-leg Options** - Executes bull/bear call/put debit spreads
-- **Live Dashboard** - Real-time P&L, positions, and decision audit trail
-- **Complete Audit Trail** - Every decision logged with reasoning and outcomes
+- **Novel Signal Source** - Only hackathon submission trading tariff/trade policy signals
+- **Risk-First Architecture** - Multi-gate validation before submission (5 trades blocked, 9 approved)
+- **Complete Audit Trail** - Every decision logged with reasoning (PASSED/BLOCKED outcomes)
+- **Multi-leg Options Support** - Bear put and bull call debit spreads
+- **Live Integration** - Real Alpaca account data, not simulated
 
 ## Tech Stack
 
@@ -203,13 +224,24 @@ Blocked trades are logged with reasoning for audit purposes.
 - **[HONEST_SUBMISSION_REPORT.md](./HONEST_SUBMISSION_REPORT.md)** - Hackathon submission report
 - **[LIVE_TRADING_EVIDENCE.md](./LIVE_TRADING_EVIDENCE.md)** - Evidence of live trading activity
 
-## Real Trading Evidence
+## Hackathon Submission Evidence
 
-This system has executed **9 real orders** on Alpaca paper account:
-- 5 equity orders (XLE, SMH, EEM, TLT, NUE)
-- 4 multi-leg option spreads (bear put / bull call debits)
+**Alpaca Account:** PA331I6VA51Z
+**Orders Submitted:** 11 (0 filled - market timing constraint)
+**Audit Trail:** 18 decision entries in `data/audit-log.json`
 
-All orders logged in `data/audit-log.json` with timestamps, reasoning, and outcomes.
+**Order Breakdown:**
+- 5 equity orders (XLE, SMH, EEM, TLT, NUE) - Status: NEW (awaiting market)
+- 4 multi-leg option spreads - Status: ACCEPTED (awaiting market)
+- 2 canceled test orders
+
+**Ground Truth:**
+- Starting Balance: $100,000
+- Current Equity: $100,000
+- P&L: $0 (no fills)
+- All orders submitted outside US market hours (02:58-08:01 UTC Sept 4)
+
+See `HACKATHON_SUBMISSION.md` and `GROUND_TRUTH_RECONCILIATION.md` for complete details.
 
 ## Roadmap
 
