@@ -12,12 +12,12 @@ TariffEdge monitors global trade policy events through GDELT and automatically g
 
 ### Key Features
 
-- 🌍 **Real-time Signal Ingestion** - GDELT 2.0 API for global tariff & trade policy news
-- 🎯 **Intelligent Ticker Mapping** - Automatically maps news events to relevant US tickers
-- 🛡️ **Risk Management Gate** - Validates max loss, position concentration, and spread parameters
-- 📊 **Multi-leg Options** - Executes bull/bear call/put debit spreads
-- 📈 **Live Dashboard** - Real-time P&L, positions, and decision audit trail
-- 🔍 **Complete Audit Trail** - Every decision logged with reasoning and outcomes
+- **Real-time Signal Ingestion** - GDELT 2.0 API for global tariff & trade policy news
+- **Intelligent Ticker Mapping** - Automatically maps news events to relevant US tickers
+- **Risk Management Gate** - Validates max loss, position concentration, and spread parameters
+- **Multi-leg Options** - Executes bull/bear call/put debit spreads
+- **Live Dashboard** - Real-time P&L, positions, and decision audit trail
+- **Complete Audit Trail** - Every decision logged with reasoning and outcomes
 
 ## Tech Stack
 
@@ -237,7 +237,7 @@ This is a hackathon project. Contributions, issues, and feature requests are wel
 
 ## Disclaimer
 
-⚠️ **This is a demonstration project using paper trading only.**
+**WARNING: This is a demonstration project using paper trading only.**
 
 - Not financial advice
 - No real money involved
@@ -250,4 +250,4 @@ Project created for hackathon demonstration purposes.
 
 ---
 
-**Built with ❤️ for algorithmic trading enthusiasts**
+**Built for algorithmic trading enthusiasts**
