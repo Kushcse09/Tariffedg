@@ -34,7 +34,7 @@ Status: ACTIVE
 
 ### 3. Live Deployment
 
-**Vercel URL:** https://tariffedge-main-j43pnqi09-ksu0928s-projects.vercel.app
+**Vercel URL:** https://tariffedge-main.vercel.app
 
 **Dashboard Shows:**
 - Live GDELT signals (refreshes every 30 seconds)
@@ -200,7 +200,7 @@ GET https://paper-api.alpaca.markets/v2/positions
 
 ### Via Live Dashboard
 
-- Visit: https://tariffedge-main-j43pnqi09-ksu0928s-projects.vercel.app
+- Visit: https://tariffedge-main.vercel.app
 - See: Live signals, account data, decision timeline
 - Verify: Data matches Alpaca API ✓
 
@@ -287,7 +287,7 @@ GET https://paper-api.alpaca.markets/v2/positions
 **Required:**
 - [x] Alpaca account ID: PA331I6VA51Z
 - [x] GitHub repository URL: https://github.com/Kushcse09/Tariffedg
-- [x] Live demo URL: https://tariffedge-main-j43pnqi09-ksu0928s-projects.vercel.app
+- [x] Live demo URL: https://tariffedge-main.vercel.app
 - [x] Write-up: HACKATHON_SUBMISSION.md
 - [x] Evidence: GROUND_TRUTH_RECONCILIATION.md
 

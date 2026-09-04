@@ -55,7 +55,7 @@ GitHub Repository:
 https://github.com/Kushcse09/Tariffedg
 
 Live Dashboard:
-https://tariffedge-main-j43pnqi09-ksu0928s-projects.vercel.app
+https://tariffedge-main.vercel.app
 
 Alpaca Paper Account:
 PA331I6VA51Z

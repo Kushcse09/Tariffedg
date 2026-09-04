@@ -196,7 +196,7 @@ This prevents the token from being exposed if you share the repository or `.git`
 Once pushed, your submission package includes:
 
 **GitHub Repository:** https://github.com/Kushcse09/Tariffedg
-**Live Dashboard:** https://tariffedge-main-j43pnqi09-ksu0928s-projects.vercel.app
+**Live Dashboard:** https://tariffedge-main.vercel.app
 **Alpaca Account:** PA331I6VA51Z
 
 Submit **HACKATHON_SUBMISSION.md** as your primary write-up before 8:30 PM IST!

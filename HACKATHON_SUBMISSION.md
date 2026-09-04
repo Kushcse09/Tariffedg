@@ -335,7 +335,7 @@ GDELT API → Signal Ingestion → Ticker Mapping
 
 **Deployment:**
 - GitHub: https://github.com/Kushcse09/Tariffedg
-- Vercel: https://tariffedge-main-j43pnqi09-ksu0928s-projects.vercel.app
+- Vercel: https://tariffedge-main.vercel.app
 
 ### Key Files
 
@@ -398,7 +398,7 @@ data/audit-log.json Complete decision history
 
 ### Live Dashboard
 
-**URL:** https://tariffedge-main-j43pnqi09-ksu0928s-projects.vercel.app
+**URL:** https://tariffedge-main.vercel.app
 
 **Features:**
 - Real-time GDELT signal feed
